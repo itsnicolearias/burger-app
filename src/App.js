@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState, useEffect} from 'react';
 import Burger from './components/Burger';
 import Cart from './components/Cart';
 
@@ -13,6 +13,18 @@ const [burgers, setBurgers] = useState([
 ]);
 
 const [cart, setCart] = useState([]);
+
+useEffect(() => {
+  let data = localStorage.getItem('compras');
+  if (data != null) {
+    setCart(JSON.parse(data));
+  }
+}, []);
+
+useEffect(() => {
+ localStorage.setItem('compras', JSON.stringify(cart))
+
+}, [cart]);
 
 
   return (

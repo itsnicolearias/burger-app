@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 const Burger = ({burger, burgers, cart, setCart}) => {
 
     const {id, nombre, precio} = burger;
@@ -20,21 +21,27 @@ const Burger = ({burger, burgers, cart, setCart}) => {
     }
     
     return (
-        <div>
-            <ul>
-                <li>{nombre}</li>
-                <li>${precio}</li>
+        <div className='card col-md-4 text-center card-group'  key={id}>
+        <div className="card" >
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGpx23cDdEMJgTi73BXjG9-baVb_Yw5mSvVw&usqp=CAU" className="card-img-top" alt="burger" />
+                <div className="card-body">
+                <h3 className="card-title">{nombre}</h3>
+                <h4 className="card-text">${precio}</h4>
                 { burgers ? 
-                 (<button type='button' onClick={() => addBurger(id)}>Agregar al carrito</button>)
-                 : ( <div>
-                    <button type='button' onClick={() => addBurger(id)}>Confirmar</button>
-                 <button type='button' onClick={() => delBurger(id)}>Eliminar</button>   
-                  </div> )
-                
-                }
-               
-            </ul>
+                    (<button type='button' className='btn btn-primary' onClick={() => addBurger(id)}>Agregar al carrito</button>)
+                    : ( <div>
+                        <button type='button' className='btn btn-success' onClick={() => addBurger(id)}>Confirmar</button>
+                        
+                    <button type='button' className='btn btn-danger' onClick={() => delBurger(id)}>Eliminar</button>   
+                    </div> )
+                    
+                    }
+       </div>
         </div>
+           
+             </div>  
+           
+       
     );
 }
 
