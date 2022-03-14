@@ -1,0 +1,9 @@
+.cart {
+    position: absolute;
+    top: 0;
+    right: 10vw;
+}
+
+.cart h3 {
+    color: red;
+}
