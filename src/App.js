@@ -1,48 +1,52 @@
-import React,{useState, useEffect} from 'react';
+import React from 'react';
+
+//import Cards from './components/Cards';
+import NavBar from './components/NavBar';
+
+//import UseFetch from './components/UseFetch';
+import { Outlet } from 'react-router-dom';
+
+
+
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import Burger from './components/Burger';
-import Cart from './components/Cart';
+import SignIn from './components/SignIn';
+import Checkoutpage from './components/CheckoutPage';
+
+import SignUp from './components/SignUp';
+
+
 
 const App = () => {
 
-const [burgers, setBurgers] = useState([
-  {id: 1, nombre: 'Santafesina', precio: 480},
-  {id: 2, nombre: 'Porteña', precio: 550},
-  {id: 3, nombre: 'Tucumana', precio: 430},
-  {id: 4, nombre: 'Rosarina', precio: 560},
-  {id: 5, nombre: 'Yankee', precio: 750}
-]);
 
-const [cart, setCart] = useState([]);
 
-useEffect(() => {
-  let data = localStorage.getItem('compras');
-  if (data != null) {
-    setCart(JSON.parse(data));
-  }
-}, []);
 
-useEffect(() => {
- localStorage.setItem('compras', JSON.stringify(cart))
-
-}, [cart]);
 
 
   return (
     <div>
-      { burgers.map((burger) => (
-        <Burger 
-          key={burger.id}
-          burger={burger}
-          cart={cart}
-          setCart={setCart}
-          burgers={burgers}
-        />
-      ))}
+    <NavBar />
+    <Outlet />
+     
 
-      <Cart
-      cart={cart}
-      setCart={setCart}
-      />
+      <BrowserRouter>
+  
+   
+  <Routes>
+    <Route path='/' element={<Burger />}>
+     
+      <Route path='signin' element={<SignIn/> } />
+      <Route path='signup' element={<SignUp /> } />
+      <Route path='checkoutpage' element={<Checkoutpage /> } />
+     
+
+    </Route>
+  </Routes>
+  
+  
+  
+   </BrowserRouter>
     </div>
   );
 }
