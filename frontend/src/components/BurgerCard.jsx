@@ -33,7 +33,7 @@ const ExpandMore = styled((props) => {
 
 export default function BurgerCard   ({burger, burgers})  {
 
-   const {id, image, title, price, description} = burger;
+   const {_id, image, title, price, description} = burger;
 
     const [value, setValue] = React.useState(0);
     const [{basket}, dispatch] = useStateValue();
@@ -49,7 +49,7 @@ export default function BurgerCard   ({burger, burgers})  {
     dispatch({
       type: actionTypes.ADD_TO_BASKET,
       item: {
-        id,
+        _id,
          title,
          image,
        price,

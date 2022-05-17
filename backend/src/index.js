@@ -1,6 +1,9 @@
 const express = require('express')
 const environmentConfig = require('./config/environmentConfig')
 const indexRoutes = require('./routes/index.routes')
+const cors = require('cors')
+const morgan = require('morgan')
+const helmet = require('helmet')
 require('./config/database')
 
 
@@ -12,6 +15,9 @@ app.use(
       extended: true,
     })
   );
+app.use(morgan("tiny"));
+app.use(helmet());
+app.use(cors());
 
 app.use('/', indexRoutes)
 

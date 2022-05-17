@@ -1,8 +1,8 @@
 import React from 'react';
 import { useStateValue } from '../services/StateProvider';
-import Checkoutcard from './CheckoutCard';
+import Checkoutcard from '../components/CheckoutCard';
 import Grid from '@mui/material/Grid';
-import Total from './Total';
+import Total from '../components/Total';
 
 const Checkoutpage = () => {
 
